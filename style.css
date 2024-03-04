@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #007bff; /* Sky blue color */
-    --secondary-color: #4bcffa; /* Lighter shade for hover effects */
-    --accent-color: #ff8c00; /* Orange tone for accents */
-    --background-color: #f8f9fa; /* Lighter background for contrast */
-    --text-color: #212529; /* Text color */
-    --footer-background-color: #343a40; /* Footer background color */
-    --footer-text-color: #f8f9fa; /* Footer text color */
-    --box-background-color: #f0f0f0; /* Slightly grey background for boxes */
-    --font-cool: 'Montserrat', sans-serif; /* Cool font for body */
+    /* Updated color scheme for a more modern look */
+    --primary-color: #0056b3; /* Deeper blue color */
+    --secondary-color: #0084ff; /* Brighter blue for hover effects */
+    --accent-color: #ff9500; /* Vibrant orange tone for accents */
+    --background-color: #f4f4f8; /* Updated background for better contrast */
+    --text-color: #333; /* Darker text color for better readability */
+    --footer-background-color: #222831; /* Darker footer background color */
+    --footer-text-color: #f8f9fa; /* Maintained footer text color */
+    --box-background-color: #ffffff; /* White background for boxes to stand out */
+    --font-cool: 'Roboto', sans-serif; /* Updated to use Roboto for a modern look */
 }
 
 * {
@@ -25,10 +26,11 @@ body, html {
 
 header {
     background-color: var(--primary-color);
-    padding: 10px 0;
+    padding: 20px 0; /* Increased padding for a larger header area */
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Added subtle shadow for depth */
 }
 
 .container {
@@ -54,10 +56,12 @@ nav ul li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
+    padding: 10px 15px; /* Added padding for larger clickable area */
+    border-radius: 5px; /* Rounded corners for nav links */
 }
 
-nav ul li a:hover {
-    color: var(--secondary-color);
+nav ul li a:hover, nav ul li a:focus {
+    background-color: var(--secondary-color); /* Background color on hover/focus for better visual feedback */
 }
 
 #logo {
@@ -68,16 +72,9 @@ nav ul li a:hover {
 .info-section {
     background-color: var(--box-background-color);
     margin: 40px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    padding: 40px; /* Increased padding for more space around content */
+    border-radius: 10px; /* Increased border radius for a softer look */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
 }
 
 .signup-container {
@@ -99,20 +96,20 @@ nav ul li a:hover {
 
 .cta-button {
     background: var(--accent-color);
-    color: var(--text-color);
-    padding: 15px 20px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-top: 20px;
+    color: white; /* Text color changed to white for better contrast */
+    padding: 12px 18px; /* Adjusted padding for button size */
+    font-size: 18px; /* Font size increased for better visibility */
+    border-radius: 50px; /* More rounded corners for a modern button look */
+    transition: background-color 0.3s ease, transform 0.2s; /* Smooth transition for hover effects */
+    margin: 20px 0; /* Top margin increased, removed auto to align left */
+    display: inline-block; /* Changed to inline-block for natural flow alignment */
+    max-width: 160px; /* Maximum width for the button */
+    text-align: center; /* Ensure text is centered within the button */
 }
 
 .cta-button:hover {
-    background: var(--secondary-color);
+    background: var(--secondary-color); /* Brighter color on hover for visual feedback */
+    transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 footer {
@@ -140,13 +137,14 @@ footer {
 
 .footer-lower {
     width: 100%;
-    text-align: center;
+    text-align: center;   
     padding-top: 10px;
 }
 
 .footer-container h3 {
     color: var(--accent-color);
     margin-bottom: 15px;
+    font-size: 20px; /* Slightly larger font size for section titles */
 }
 
 .footer-container ul {
@@ -187,5 +185,13 @@ footer {
 
     nav ul li:last-child {
         margin-right: 0;
+    }
+
+    .container {
+        padding: 0 10px; /* Reduced padding on smaller screens for more space */
+    }
+
+    header {
+        padding: 15px 0; /* Reduced header padding on smaller screens */
     }
 }
