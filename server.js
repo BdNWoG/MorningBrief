@@ -1,49 +1,57 @@
-const mongoose = require('mongoose');
 const express = require('express');
+const mysql = require('mysql2/promise');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
 
+// Database connection details should be kept secret (use environment variables)
+const databaseConfig = {
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
+};
+
+// Create a MySQL pool
+const pool = mysql.createPool(databaseConfig);
+
 const app = express();
 
-// Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("Connected to MongoDB");
-});
-
-// Define a User Schema
-const userSchema = new mongoose.Schema({
-  email: String,
-  password: String
-});
-
-// Create a User model
-const User = mongoose.model('User', userSchema);
-
-// Enable CORS for frontend communication
-app.use(cors({
+// CORS options
+const corsOptions = {
     origin: 'https://bdnwog.github.io', // Allow only your GitHub Pages domain
     optionsSuccessStatus: 200 // For legacy browser support
-}));
+};
 
-// Parse JSON bodies
-app.use(express.json());
+// Enable CORS with the options
+app.use(cors(corsOptions));
+app.use(express.json()); // Parse JSON bodies
 
 app.post('/signup', async (req, res) => {
     try {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
-      const newUser = new User({ email: req.body.email, password: hashedPassword });
-      await newUser.save(); // Save the user to MongoDB
-      res.status(201).json({ message: "User created successfully" });
+      const { email, password } = req.body;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      
+      const [rows] = await pool.query(
+        'SELECT * FROM users WHERE email = ?',
+        [email]
+      );
+
+      if (rows.length) {
+        return res.status(409).send({ message: "Email already in use." });
+      }
+
+      await pool.query(
+        'INSERT INTO users (email, password) VALUES (?, ?)',
+        [email, hashedPassword]
+      );
+
+      res.status(201).send({ message: "User created successfully" });
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: error.message });
+      res.status(500).send({ message: "Internal Server Error" });
     }
 });
 
-// Start the server on the provided port or default to 3000
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
