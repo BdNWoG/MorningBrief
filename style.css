@@ -1,3 +1,4 @@
+/* Style for the entire document */
 body, html {
     margin: 0;
     padding: 0;
@@ -12,6 +13,7 @@ body, html {
     overflow: hidden;
 }
 
+/* Header styles */
 header {
     background: #005288;
     color: #ffffff;
@@ -20,18 +22,14 @@ header {
     border-bottom: #0779e4 3px solid;
 }
 
-header h1 {
-    float: left;
-    margin-top: 0;
-}
-
-header nav {
-    float: right;
-    margin-top: 10px;
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header nav ul {
-    margin: 0;
+    list-style: none;
     padding: 0;
 }
 
@@ -43,47 +41,63 @@ header nav ul li {
 header nav ul li a {
     color: #ffffff;
     text-decoration: none;
+    font-size: 1em;
 }
 
-.info-section {
-    padding: 20px 0;
-    background: #f0f2f5;
+/* Style for the logo */
+header #logo {
+    padding: 10px 0;
 }
 
-.info-section:nth-of-type(even) {
-    background: #ffffff;
+/* Main content styles */
+main .container {
+    padding: 20px;
 }
 
-#hero {
-    background-image: url('background.jpg'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-    padding: 100px 0;
+/* Styles for the signup form */
+.signup form {
+    background: #fff;
+    padding: 40px;
+    border-radius:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 40px auto;
 }
 
-#hero h2, #hero p {
+.signup form h2 {
     text-align: center;
-    color: #fff;
+    color: #005288;
 }
 
-#logo {
-    height: 60px; /* Or your preferred size */
-    padding: 10px 0; /* Adjust based on your header height */
-}
-
-.cta-button {
+.signup form label {
     display: block;
-    width: 200px;
-    margin: 20px auto;
+    margin-bottom: 5px;
+}
+
+.signup form input[type=email],
+.signup form input[type=password] {
+    width: 100%;
     padding: 10px;
-    background-color: #008CBA;
-    color: #ffffff;
-    text-align: center;
-    text-decoration: none;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
     border-radius: 5px;
 }
 
+.signup form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #005288;
+    color: white;
+    cursor: pointer;
+}
+
+.signup form button:hover {
+    background-color: #0779e4;
+}
+
+/* Footer styles */
 footer {
     background-color: #333;
     color: #ffffff;
@@ -94,14 +108,12 @@ footer {
     width: 100%;
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
-    .container {
+    header .container,
+    main .container,
+    footer .container {
         width: 95%;
-    }
-
-    header h1, header nav {
-        float: none;
-        text-align: center;
     }
 
     header nav ul li {
