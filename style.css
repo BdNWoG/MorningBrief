@@ -8,7 +8,7 @@
     --footer-background-color: #222831; /* Darker footer background color */
     --footer-text-color: #f8f9fa; /* Maintained footer text color */
     --box-background-color: #ffffff; /* White background for boxes to stand out */
-    --font-cool: 'Roboto', sans-serif; /* Updated to use Roboto for a modern look */
+    --font-cool: 'Poppins', sans-serif;
 }
 
 * {
