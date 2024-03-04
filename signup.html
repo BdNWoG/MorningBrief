@@ -5,37 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Morning Brief</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 </head>
 <body>
-    <header>
+    <header class="sticky-header">
         <div class="container">
             <a href="index.html">
                 <img src="Logo.png" alt="Morning Brief Logo" id="logo">
             </a>
             <nav>
                 <ul>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#features">Features</a></li>
-                    <li><a href="signup.html">Signup</a></li>
+                    <li><i class="fas fa-info-circle"></i><a href="index.html#about">About</a></li>
+                    <li><i class="fas fa-star"></i><a href="index.html#features">Features</a></li>
+                    <li><i class="fas fa-user-plus"></i><a href="signup.html">Signup</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <section class="signup">
-            <form id="signupForm">
-                <h2>Signup for Morning Brief</h2>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <button type="submit">Signup</button>
-            </form>
-        </section>
+        <div class="signup-container">
+            <section class="signup-card" data-aos="fade-up">
+                <form id="signupForm">
+                    <h2>Signup for Morning Brief</h2>
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <button type="submit" class="cta-button">Signup</button>
+                </form>
+            </section>
+        </div>
     </main>
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Morning Brief. All rights reserved.</p>
+        <div class="container footer-container">
+            <div>
+                <h3>Morning Brief</h3>
+                <p>Delivering tailored information right to your morning routine.</p>
+            </div>
+            <div>
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="signup.html">Signup</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Contact Us</h3>
+                <p>Have questions? Reach out to our support team.</p>
+            </div>
         </div>
     </footer>
-    <script src="script.js"></script>
 </body>
 </html>
