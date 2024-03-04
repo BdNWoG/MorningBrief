@@ -1,11 +1,13 @@
 :root {
-    --primary-color: #0056b3;
-    --secondary-color: #0096c7;
-    --accent-color: #ffc107;
-    --background-color: #ffffff;
-    --text-color: #212529;
-    --footer-background-color: #343a40;
-    --footer-text-color: #f8f9fa;
+    --primary-color: #007bff; /* Sky blue color */
+    --secondary-color: #4bcffa; /* Lighter shade for hover effects */
+    --accent-color: #ff8c00; /* Orange tone for accents */
+    --background-color: #f8f9fa; /* Lighter background for contrast */
+    --text-color: #212529; /* Text color */
+    --footer-background-color: #343a40; /* Footer background color */
+    --footer-text-color: #f8f9fa; /* Footer text color */
+    --box-background-color: #f0f0f0; /* Slightly grey background for boxes */
+    --font-cool: 'Montserrat', sans-serif; /* Cool font for body */
 }
 
 * {
@@ -15,15 +17,17 @@
 }
 
 body, html {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--font-cool), sans-serif;
     color: var(--text-color);
     background-color: var(--background-color);
+    scroll-behavior: smooth;
 }
 
-.sticky-header {
+header {
+    background-color: var(--primary-color);
+    padding: 10px 0;
     position: sticky;
     top: 0;
-    background-color: var(--primary-color);
     z-index: 1000;
 }
 
@@ -46,10 +50,6 @@ nav ul li {
     align-items: center;
 }
 
-nav ul li i {
-    margin-right: 5px;
-}
-
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -60,54 +60,55 @@ nav ul li a:hover {
     color: var(--secondary-color);
 }
 
+#logo {
+    width: 100px; /* Adjust logo size as needed */
+    height: auto;
+}
+
+.info-section {
+    background-color: var(--box-background-color);
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .signup-card {
-    background: white;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: white;
     padding: 20px;
     border-radius: 8px;
     width: 100%;
     max-width: 400px;
-}
-
-.signup-card h2 {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.input-group {
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
-    color: var(--text-color);
-    margin-bottom: 5px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px; /* Adjust the margin as needed */
 }
 
 .cta-button {
-    width: 100%;
-    background: var(--primary-color);
-    color: white;
-    border: none;
+    background: var(--accent-color);
+    color: var(--text-color);
     padding: 15px 20px;
-    font-size: 16px;
     border-radius: 4px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 20px;
 }
 
 .cta-button:hover {
@@ -117,27 +118,40 @@ nav ul li a:hover {
 footer {
     background: var(--footer-background-color);
     color: var(--footer-text-color);
-    padding: 20px 0;
+    padding: 40px 0;
 }
 
 .footer-container {
     display: flex;
     justify-content: space-between;
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 20px;
+    flex-wrap: wrap;
 }
 
-.footer-container div {
-    flex-basis: 33%;
+.footer-upper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.footer-upper > div {
+    flex: 1;
+    padding: 0 15px;
+}
+
+.footer-lower {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
 }
 
 .footer-container h3 {
+    color: var(--accent-color);
     margin-bottom: 15px;
 }
 
 .footer-container ul {
-    list-style-type: none;
+    list-style: none;
+    padding: 0;
 }
 
 .footer-container ul li a {
@@ -151,20 +165,27 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .footer-container {
+    .footer-container,
+    .footer-upper {
         flex-direction: column;
         align-items: center;
     }
 
-    .footer-container div {
+    .footer-upper > div {
+        width: 100%;
         margin-bottom: 20px;
     }
 
     nav ul {
         flex-direction: column;
+        align-items: center;
     }
 
     nav ul li {
         margin-bottom: 10px;
+    }
+
+    nav ul li:last-child {
+        margin-right: 0;
     }
 }
