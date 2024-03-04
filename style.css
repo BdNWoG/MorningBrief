@@ -1,123 +1,142 @@
-/* Style for the entire document */
-body, html {
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f0f2f5;
     color: #333;
+    line-height: 1.6;
+    font-size: 18px;
 }
 
 .container {
-    width: 80%;
+    max-width: 1100px;
     margin: auto;
-    overflow: hidden;
+    padding: 0 20px;
 }
 
-/* Header styles */
+/* Header */
 header {
-    background: #005288;
+    background: #007bff;
     color: #ffffff;
-    padding-top: 30px;
+    padding-top: 20px;
     min-height: 70px;
-    border-bottom: #0779e4 3px solid;
+    border-bottom: #0275d8 3px solid;
 }
 
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-header nav ul li {
-    display: inline;
-    margin-left: 20px;
-}
-
-header nav ul li a {
+header a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 1em;
+    text-transform: uppercase;
+    font-size: 16px;
 }
 
-/* Style for the logo */
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
 header #logo {
-    padding: 10px 0;
+    float: left;
+    margin-top: 10px;
 }
 
-/* Main content styles */
+header nav {
+    float: right;
+    margin-top: 15px;
+}
+
+/* Main Styles */
 main .container {
     padding: 20px;
-}
-
-/* Styles for the signup form */
-.signup form {
-    background: #fff;
-    padding: 40px;
-    border-radius:10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 40px auto;
-}
-
-.signup form h2 {
     text-align: center;
-    color: #005288;
 }
 
-.signup form label {
-    display: block;
-    margin-bottom: 5px;
+#hero {
+    background: #333;
+    color: #fff;
+    padding: 100px 0;
 }
 
-.signup form input[type=email],
-.signup form input[type=password] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.info-section {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f4f4f4;
 }
 
-.signup form button {
-    width: 100%;
-    padding: 10px;
+.info-section h2, .info-section p {
+    margin-bottom: 10px;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    color: #fff;
+    background: #007bff;
+    padding: 10px 30px;
+    font-size: 18px;
     border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background: #0056b3;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Signup/Login Page Styles */
+.signup form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #005288;
+}
+
+.signup h2 {
+    margin-bottom: 20px;
+}
+
+.signup label {
+    display: block;
+    margin: 10px 0;
+}
+
+.signup input[type="email"], .signup input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.signup button[type="submit"] {
+    width: 100%;
+    background-color: #007bff;
     color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-.signup form button:hover {
-    background-color: #0779e4;
-}
-
-/* Footer styles */
-footer {
-    background-color: #333;
-    color: #ffffff;
-    text-align: center;
-    padding: 10px;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    header .container,
-    main .container,
-    footer .container {
-        width: 95%;
-    }
-
-    header nav ul li {
-        display: block;
-        margin-top: 10px;
-    }
+.signup button[type="submit"]:hover {
+    background-color: #0056b3;
 }
