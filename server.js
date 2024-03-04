@@ -1,57 +1,42 @@
 const express = require('express');
-const mysql = require('mysql2/promise');
-const bcrypt = require('bcrypt');
+const { MongoClient } = require('mongodb');
 const cors = require('cors');
 
-// Database connection details should be kept secret (use environment variables)
-const databaseConfig = {
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
-};
-
-// Create a MySQL pool
-const pool = mysql.createPool(databaseConfig);
-
 const app = express();
+app.use(cors());
+app.use(express.json());
 
-// CORS options
-const corsOptions = {
-    origin: 'https://bdnwog.github.io', // Allow only your GitHub Pages domain
-    optionsSuccessStatus: 200 // For legacy browser support
-};
+// MongoDB URI and database name
+const uri = "your_mongodb_uri_here"; // Replace with your MongoDB URI
+const dbName = "morningBriefDB";
 
-// Enable CORS with the options
-app.use(cors(corsOptions));
-app.use(express.json()); // Parse JSON bodies
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.post('/signup', async (req, res) => {
     try {
-      const { email, password } = req.body;
-      const hashedPassword = await bcrypt.hash(password, 10);
-      
-      const [rows] = await pool.query(
-        'SELECT * FROM users WHERE email = ?',
-        [email]
-      );
+        await client.connect();
+        const db = client.db(dbName);
+        const users = db.collection('users');
 
-      if (rows.length) {
-        return res.status(409).send({ message: "Email already in use." });
-      }
+        const { email } = req.body;
 
-      await pool.query(
-        'INSERT INTO users (email, password) VALUES (?, ?)',
-        [email, hashedPassword]
-      );
+        // Check if the email already exists
+        const userExists = await users.findOne({ email: email });
+        if (userExists) {
+            return res.status(409).send({ message: "Email already in use." });
+        }
 
-      res.status(201).send({ message: "User created successfully" });
+        // Insert the new user with just an email
+        await users.insertOne({ email: email });
+
+        res.status(201).send({ message: "User created successfully." });
     } catch (error) {
-      console.error(error);
-      res.status(500).send({ message: "Internal Server Error" });
+        console.error(error);
+        res.status(500).send({ message: "Internal Server Error" });
+    } finally {
+        await client.close();
     }
 });
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
