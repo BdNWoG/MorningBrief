@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB URI and database name
-const uri = "your_mongodb_uri_here"; // Replace with your MongoDB URI
+const uri = "mongodb+srv://billyghy:<password>@cluster0.8zuvyfw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"; // Replace with your MongoDB URI
 const dbName = "morningBriefDB";
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
