@@ -37,6 +37,7 @@ header {
     max-width: 1200px;
     margin: auto;
     padding: 0 20px;
+    transition: transform 0.3s ease-in-out;
 }
 
 nav ul {
@@ -75,8 +76,10 @@ nav ul li a:hover, nav ul li a:focus {
     padding: 40px; /* Increased padding for more space around content */
     border-radius: 10px; /* Increased border radius for a softer look */
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* More pronounced shadow for depth */
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Container styles remain the same */
 .signup-container {
     display: flex;
     justify-content: center;
@@ -84,18 +87,40 @@ nav ul li a:hover, nav ul li a:focus {
     min-height: 40vh;
 }
 
+/* Card styles with a lighter shadow for a softer look */
 .signup-card {
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 12px;
     width: 100%;
-    max-width: 400px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
     margin-bottom: 30px; /* Adjust the margin as needed */
+}
+
+/* More prominent header with increased spacing */
+.signup-header {
+    color: #333;
+    margin-bottom: 40px;
+    font-family: 'Roboto', sans-serif; /* Modern, readable font */
+    text-align: center;
+}
+
+/* Unified input style without label for a cleaner look */
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* So padding doesn't affect width */
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
 }
 
 .cta-button {
     background: var(--accent-color);
+    font-family: 'Roboto', sans-serif;
     color: white; /* Text color changed to white for better contrast */
     padding: 12px 18px; /* Adjusted padding for button size */
     font-size: 18px; /* Font size increased for better visibility */
@@ -105,6 +130,7 @@ nav ul li a:hover, nav ul li a:focus {
     display: inline-block; /* Changed to inline-block for natural flow alignment */
     max-width: 160px; /* Maximum width for the button */
     text-align: center; /* Ensure text is centered within the button */
+    margin-bottom: 10px; /* Adjust the margin as needed */
 }
 
 .cta-button:hover {
@@ -162,6 +188,25 @@ footer {
     color: var(--accent-color);
 }
 
+/* h2 styles */
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+    color: #444444; /* A cool blue */
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* h3 styles */
+h3 {
+    font-family: 'Merriweather', sans-serif;
+    font-size: 22px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
 @media (max-width: 768px) {
     .footer-container,
     .footer-upper {
@@ -194,4 +239,22 @@ footer {
     header {
         padding: 15px 0; /* Reduced header padding on smaller screens */
     }
+}
+
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/* Example AOS animation for zoom-in */
+.aos-init {
+    transform: scale(0.6);
+}
+
+.aos-animate {
+    transform: scale(1);
 }
