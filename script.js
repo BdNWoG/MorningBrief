@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Replace 'https://your-backend-domain.com/signup' with your actual backend endpoint
-        const endpoint = 'https://your-backend-domain.com/signup'; 
+        const endpoint = 'https://morning-brief-1mbx6ad58-billy-gaos-projects.vercel.app/signup'; 
         const formData = {
             email: emailInput.value
         };
